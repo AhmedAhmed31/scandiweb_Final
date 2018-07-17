@@ -1,22 +1,19 @@
 <?php
 // This page for add Products
 
-include "../database/database.php";
+include '../init.php';
+require 'Products.php';
 $db = database::getInstance();
+$new= new Products;
+$db = new database($db);
 
-$stmt = $db->query('select * from products_types');
-$types = $stmt->fetchAll();
+$types=$new->ProductType($db);
+
 // take data from fields and put it in Database
 if (isset($_POST['submit']))
 {
-    $Name = $_POST['Name1'];
-    $SKU = $_POST['SKU'];
-    $price = $_POST['price'];
-    $unit = $_POST['unit_value'];
-    $product_type = $_POST['type'];
-    $insert = $db->query("INSERT INTO products(`Name`,`sku`,`price`,`unit_value`,`product_type`)VALUES ('$Name','$SKU','$price','$unit','$product_type')");
 
-
+    $insert = $new->AddProduct($db);
 }
 
 

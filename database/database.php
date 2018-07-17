@@ -2,9 +2,15 @@
 
 class database
 {
+    public $link;
+    public $error;
+
     private static $connection;
 
-    private function __construct(){}
+public  function __construct($db)
+{
+    $this->db=$db;
+}
 
     private static function connect()
     {
@@ -28,4 +34,25 @@ class database
         self::connect();
         return self::$connection;
     }
-}
+
+   /*
+   */
+    public function getProducts($query)
+    {
+        $query = $this->db->query($query);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function getProducttype($query)
+    {
+        $query = $this->db->query($query);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function InsertNewProduct($query){
+
+
+    $this->db->query($query);
+
+    }
+    }

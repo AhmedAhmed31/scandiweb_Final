@@ -1,6 +1,5 @@
 <?php
-
-$addproduct = 'product/';
+require "database/database.php";
 $css = 'css/';
 $js = 'js/';
-$img = 'Images/Scandiweb_logo.PNG';
+$add='product';
